@@ -170,7 +170,7 @@ res=result[0].candidates[0].content
 });
 
 // Log in to Discord with your bot token
-client.login("NzkzMTI3ODAzMDQxMjE4NTkw.X-nv0w.YvrKc2oOPdVMOT3uWES55euWt-k");
+client.login("NzkzMTI3ODAzMDQxMjE4NTkw.G12FlP.T14qjCREl2k6fpzBQC_k_ANJggOQBxWqvbKipw");
 
 
 
