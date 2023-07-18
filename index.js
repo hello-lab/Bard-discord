@@ -14,7 +14,6 @@ const gclient = new TextServiceClient({
 // Create a new Discord client
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
-// Create a new OpenAI Chat API client
 
 const express =require('express')
 const app = express();
