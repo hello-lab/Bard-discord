@@ -14,6 +14,7 @@ const gclient = new TextServiceClient({
 // Create a new Discord client
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
+// Create a new OpenAI Chat API client
 
 const express =require('express')
 const app = express();
@@ -97,19 +98,22 @@ res=result[0].candidates[0].output
 			rez= res.match(/(.|[\r\1999]){1,1999}/g)
 			console.log(rez)
 			for(i=0;i<rez.length;i++)
-				message.channel.send(rez[i])
+				if (i==0)
+				message.reply(rez[i])
+			else 
+					message.channel.send(rez[i])
 		}
-		else message.channel.send(res)
+		else message.reply(res)
 		}
     
 		catch (error) {
       console.error('Error:', error);
-      message.channel.send('Sorry, an error occurred while processing your request.');
+      message.reply('Sorry, an error occurred while processing your request.\n'+error);
     }
   });
     } catch (error) {
       console.error('Error:', error);
-      message.channel.send('Sorry, an error occurred while processing your request.');
+      message.reply('Sorry, an error occurred while processing your request.\n'+error);
     }
   }
 
@@ -131,11 +135,11 @@ const { DiscussServiceClient } = require("@google-ai/generativelanguage");
 			{"category": "HARM_CATEGORY_DEROGATORY",
   "threshold": "BLOCK_NONE"},
 			{"category": "HARM_CATEGORY_TOXICITY",
-  "threshold": "BLOCK_NONE"},
+  "threshold": "BLOCK_ONLY_HIGH"},
 			{"category": "HARM_CATEGORY_VIOLENCE",
-  "threshold": "BLOCK_NONE"},
+  "threshold": "BLOCK_ONLY_HIGH"},
 			{"category": "HARM_CATEGORY_SEXUAL",
-  "threshold": "BLOCK_NONE"},
+  "threshold": "BLOCK_ONLY_HIGH"},
 			{"category": "HARM_CATEGORY_MEDICAL",
   "threshold": "BLOCK_NONE"},
 			{"category": "HARM_CATEGORY_DANGEROUS",
@@ -155,25 +159,35 @@ res=result[0].candidates[0].content
 			rez= res.match(/(.|[\r\1999]){1,1999}/g)
 			console.log(rez)
 			for(i=0;i<rez.length;i++)
-				message.channel.send(rez[i])
+				if (i==0)
+				message.reply(rez[i])
+
+			else 
+					message.channel.send(rez[i])
 		}
 		
-		else message.channel.send(res)
+		else message.reply(res)
 		}
     
 		catch (error) {
+			if (error== undefined) {
+				return
+			}
       console.error('Error:', error);
-      message.channel.send('Sorry, an error occurred while processing your request.');
+      message.reply('Sorry, an error occurred while processing your request.\nYour prompt might be hateful/offensive/sexual if not please take the screenshort and report to <@658666010890600448>');
     }
   });
     } catch (error) {
+			if (error== undefined) {
+				return
+			}
       console.error('Error:', error);
-      message.channel.send('Sorry, an error occurred while processing your request.');
+      message.reply('Sorry, an error occurred while processing your request.\nYour prompt might be hateful/offensive/sexual if not please take the screenshort and report to <@658666010890600448>');
     }
 	}
 });
-
+//discord.com/api/oauth2/authorize?client_id=1130920493524983809&permissions=150528&scope=bot
 // Log in to Discord with your bot token
-client.login("NzkzMTI3ODAzMDQxMjE4NTkw.G12FlP.T14qjCREl2k6fpzBQC_k_ANJggOQBxWqvbKipw");
+client.login("MTEzMDkyMDQ5MzUyNDk4MzgwOQ.GN3p1n.VlPezVkfokIgAGwyW8YBGTWB3lDdutvsv_QxZ4");
 
 
