@@ -23,7 +23,7 @@ const port = 3000;
 app.get('/', function (req, res) {
 	
 	client.on('ready', () => {
-  res.send('Logged in as ${client.user.tag}`);
+  res.send('Logged in as'+client.user.tag);
 });
 	});
 
@@ -39,7 +39,7 @@ const openai = new OpenAIApi(configuration);
 
 // Event triggered when the bot is ready and connected to Discord
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}`);
+  console.log('Logged in as'+ client.user.tag);
 });
 
 
@@ -176,6 +176,5 @@ res=result[0].candidates[0].content
 
 // Log in to Discord with your bot token
 client.login("NzkzMTI3ODAzMDQxMjE4NTkw.G12FlP.T14qjCREl2k6fpzBQC_k_ANJggOQBxWqvbKipw");
-
 
 
