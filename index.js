@@ -16,18 +16,15 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 
 // Create a new OpenAI Chat API client
 
-const express =require('express')
-const app = express();
-const port = 3000;
-
-app.get('/', function (req, res) {
-	
-	client.on('ready', () => {
-  res.send('Logged in as'+client.user.tag);
+const http = require('http');
+http.createServer((req, res) => {
+res.writeHead(200, {
+    'Content-type': 'text/plain'
 });
-	});
+    res.write('Hey');
+    res.end();
+}).listen(4000);
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 
  const { Configuration, OpenAIApi } = require("openai");
