@@ -1,6 +1,5 @@
 const { Client, GatewayIntentBits } = require( 'discord.js')
-const { TextServiceClient } =
-  require("@google-ai/generativelanguage").v1beta2;
+const { TextServiceClient } = require("@google-ai/generativelanguage");
 
 const { GoogleAuth } = require("google-auth-library");
 
