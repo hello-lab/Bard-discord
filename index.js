@@ -113,7 +113,7 @@ res=result[0].candidates[0].output
     }
   }
 
-	else if (message.channel.name=="ezio-chat"){
+	else if (message.channel.name=="ai-chat"){
 		const prompt = message.content.replace(mentionRegex, '').trim();
 const { DiscussServiceClient } = require("@google-ai/generativelanguage");
 		const ggclient = new DiscussServiceClient({
