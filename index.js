@@ -162,7 +162,13 @@ res=result[0].candidates[0].content
 					message.channel.send(rez[i])
 		}
 		
-		else message.reply(res)
+		else {
+			try {
+			message.reply(res)}
+			catch(er){
+		message.reply("ERROR CODE - 168")
+		}
+		}
 		}
     
 		catch (error) {
